@@ -42,8 +42,8 @@ function App() {
         <h2 className="text-white text-center my-3 text-3xl mb-6">Password Generator</h2>
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
           <input 
-                type="text" 
-                value={password} 
+                type="text"
+                value={password}
                 className="outline-none w-full py-1 px-3 bg-white"
                 placeholder="password" 
                 readOnly
