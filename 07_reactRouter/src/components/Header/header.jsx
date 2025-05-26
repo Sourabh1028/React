@@ -42,7 +42,7 @@ export default function Header() {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink
+                                <NavLink to= "/about"
                                     className={({isActive}) =>
                                         `block py-2 ${isActive} pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
@@ -51,7 +51,7 @@ export default function Header() {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink
+                                <NavLink to="/contact"
                                     className={({isActive}) =>
                                         `block py-2 ${isActive} pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
