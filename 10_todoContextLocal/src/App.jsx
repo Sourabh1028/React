@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import { TodoContext, TodoProvider } from './context'
 import './App.css'
+import TodoForm from './Components/TodoForm'
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -20,8 +19,22 @@ function App() {
   }
 
   const toggleComplete = (id) => {
-    setTodos((prev) => prev.map((prevTodo) => prevTodo === id))
+    setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? { ...prev, completed: !prevTodo } : prevTodo))
   }
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"))
+
+    if (todos && todos.length > 0) {
+      setTodos(todos)
+    }
+  }, [])
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"))
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+
 
   return (
     <TodoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
@@ -30,6 +43,7 @@ function App() {
           <h1 className="text-2xl font-bold text-center mb-8 mt-2">Manage Your Todos</h1>
           <div className="mb-4">
             {/* Todo form goes here */}
+            <TodoForm />
           </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
@@ -41,3 +55,5 @@ function App() {
 }
 
 export default App
+
+
